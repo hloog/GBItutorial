@@ -1,0 +1,62 @@
+\documentclass{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{color}
+\begin{document}
+	\begin{frame}
+		\frametitle{Paare ($\simeq$ Tupel)}
+		A und B seien Mengen, $a\in A$ und $b\in B$.
+		Dann ist $(a,b)$ ein Tupel\\
+		$a = b$ ist erlaubt, jedoch ist bei $ a\neq b$ die Reihenfolge entscheidend! $(1, 2) \neq (2, 1)$\\
+		Relation = Menge R, $R\subseteq A\times B$
+	\end{frame}
+	\begin{frame}
+		\frametitle{Kartesisches Produkt}
+		Kartesisches Produkt von Mengen A und B:\\
+		$A \times B := \{ (a, b)\vert a\in A$ und $b\in B\}$
+		Sei $\lvert A\rvert = n$ und $\lvert B\rvert = m$, dann $\lvert A\times B\rvert = n * m$
+		% evtl kartesisches produkt vieler mengen? (indukti definiert zB)
+		Kartesisches Produkt mit sich selbst:\\
+		$M^{4} = M\times M\times M\times M$\\
+		$(m_{1}, m_{2}, m_{3}, m_{4})\in M^{4}$ genau dann, wenn $m_{1}\in M, m_{2}\in M, m_{3}\in M$ und $m_{4}\in M$\\
+		$M^{n} = M \times M\times\dots\times M\times M$
+	\end{frame}
+	\begin{frame}
+		\frametitle{Eigenschaften von Relationen}
+		Seien A, B Mengen und $R\subseteq A\times B$ eine Relation\\
+		\underline{linkstotal}\\
+		$\forall a\in A:\exists b\in B: (a,b)\in R$\\
+		%Zeichnung, ``jedes a muss verwendet werden''
+		\underline{rechtseindeutig}\\
+		$\forall (a, b_{1}), (a, b_{2})\in R: b_{1} = b_{2}$\\
+		%für alle a gilt: max ein b pro relation + Zeichnung
+		
+		Relationen, die \emph{linkstotal} und \emph{rechtseindeutig} sind, heißen \emph{\underline{Abbildungen}}\\
+		Schreibweise: $R: A\longrightarrow B$\\
+		Definitionsbereich, Zielbereich %Pfeile dazufügen
+	\end{frame}
+	\begin{frame}
+		\frametitle{Eigenschaften von Abbildungen}
+		\underline{linkseindeutig}(injektiv)\\
+		$\forall (a_{1}, b_{1}), (a_{2}, b_{2})\in R: a_{1} \neq a_{2}\Rightarrow b_{1} \neq b_{2}$\\%Implikation erklären+zeichnung
+		\underline{rechtstotal}(surjektiv)\\
+		$\forall b\in B: \exists a\in A: (a, b)\in R$\\
+		Eine Abbildung, die  sowohl \emph {injektiv} als auch \emph{surjekti} ist, heißt \emph{bijektiv}.
+	\end{frame}
+	
+	%% induktive definition muss an andere Stelle, passt hier nicht!
+	\begin{frame}
+		\frametitle{Induktive Definition}
+		Startelement, meist mit Index 0 oder 1\\
+		induktive Definition dann über Induktionsschritt, wie ergibt sich (n+1)-ter Fall aus n-tem Fall\\
+		Beispiel: induktive Definition von Zweiterpotenz\\
+		Induktionsanfang: $Z_{0} = 1$\\
+		Induktionsschritt: $\forall i\in \mathbb{N}_0 : Z_{i+1} = Z_{i} * 2$\\
+		Hierbei ist dann $Z_{i} = 2^{i}$
+	\end{frame}
+\end{document}
