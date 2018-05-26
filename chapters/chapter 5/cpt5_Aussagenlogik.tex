@@ -1,0 +1,310 @@
+\documentclass{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{color}
+%
+\title{Kapitel 5: Aussagenlogik}
+\author{Raphael Adalid Braun, Jannis Weis}
+\date{\today}
+\institute{KIT - Karlruher Institut für Technologie}
+\usetheme{Warsaw}
+\begin{document}
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	\begin{frame}
+		\frametitle{Aussagenlogik}
+		\underline{Zweiwertigkeit:} Jede Aussage ist entweder wahr oder falsch\\
+		\underline{Aussagenlogische Konnektive}\\
+		Negation: $\neg$\\
+		logisches \textbf{und}: $\wedge$\\
+		logisches \textbf{oder}: $\vee$\\
+		logische Folgerung: $\rightarrow$ (Implikation)\\
+		Aussagevariablen: $Var_{AL}$, Elemente meist mit $P, Q, R, S$ bezeichnet
+		Alphabet der Aussagenlogik: $A_{AL}=\{(,),\neg,\wedge,\vee,\rightarrow\}\cup Var_{AL}$\\
+	\end{frame}
+	\begin{frame}
+		\frametitle{Konstruktionsabbildungen}
+		$f_{\neg}: A^{\ast}_{AL}\longrightarrow A^{\ast}_{AL}, G\mapsto (\neg G)$\\
+		$f_{\wedge}:A^{\ast}_{AL}\times A^{\ast}_{AL}\longrightarrow A^{\ast}_{AL}, (G, H)\mapsto (G\wedge H)$\\
+		$f_{\vee}:A^{\ast}_{AL}\times A^{\ast}_{AL}\longrightarrow A^{\ast}_{AL}, (G, H)\mapsto (G\vee H)$\\
+		$f_{\rightarrow}:A^{\ast}_{AL}\times A^{\ast}_{AL}\longrightarrow A^{\ast}_{AL}, (G, H)\mapsto (G\rightarrow H)$\\
+		Bindungsstärke:\\
+		$\neg>\vee>\wedge>\rightarrow$\\
+	\end{frame}
+	\begin{frame}
+		\frametitle{Aussagenlogischen Term konstruieren}
+		Gesucht: $((A\rightarrow B)\wedge (\neg A\vee\neg C))$\\
+		Vorgehen: Immer zuerst kleine Terme konstruieren und verbinden\\
+		\textcolor{green}{$f_{\neg} ($}$A$\textcolor{green}{$)$}$ = \neg A$\\
+		\textcolor{blue}{$f_{\neg}($}$C$\textcolor{blue}{$)$}$ = \neg C$\\
+		\textcolor{red}{$f_{\vee}($}\textcolor{green}{$f_{\neg} ($}$A$\textcolor{green}{$)$}, \textcolor{blue}{$f_{\neg}($}$C$\textcolor{blue}{$)$}\textcolor{red}{$)$}$ = (\neg A\vee\neg C)$\\
+		\textcolor{purple}{$f_{\rightarrow}($}$A,B$\textcolor{purple}{$)$}$ = (A\rightarrow B)$\\
+		\textcolor{brown}{$f_{\rightarrow}($}\textcolor{red}{$f_{\vee}($}\textcolor{green}{$f_{\neg} ($}$A$\textcolor{green}{$)$}, \textcolor{blue}{$f_{\neg}($}$C$\textcolor{blue}{$)$}\textcolor{red}{$)$},\textcolor{purple}{$f_{\rightarrow}($}$A,B$\textcolor{purple}{$)$}\textcolor{brown}{$)$}$ = ((A\rightarrow B)\wedge (\neg A\vee\neg C))$\\
+	\end{frame}
+	\begin{frame}
+		\frametitle{Interpretation von Formeln}
+		Interpretation $I$, $I: Var_{AL}\longrightarrow\mathbb{B}$\\
+		Auswertung: $val_{I}: For_{AL}\longrightarrow\mathbb{B}$\\
+		Funktioniert analog wie Konstruktionsabbildungen.\\
+		Bsp: Seien $P, Q, R$ Aussagen mit $I(P), I(Q) = w$ und $I(R) = f$\\
+		$val_{I}((((P\rightarrow Q)\rightarrow R)\wedge(R\vee Q))\rightarrow P$)\\ %boolsche funktion noch einbringen
+		$=b_{\rightarrow}(val_{I}(((P\rightarrow Q)\rightarrow R)\wedge(R\vee Q)), val_{I}(P))$\\
+		$=b_{\rightarrow}(b_{\wedge}(val_{I}((P\rightarrow Q)\rightarrow R),val_{I}(R\vee Q)), I(P))$\\
+		$=b_{\rightarrow}(b_{\wedge}(b_{\rightarrow}(val_{I}(P\rightarrow Q), val_{I}(R)), val_{I}(R\vee Q)), w)$\\
+		$=~b_{\rightarrow}(b_{\wedge}(b_{\rightarrow}(b_{\rightarrow}(val_{I}(P), val_{I}(Q)), I(R)), b_{\vee}(val_{I}(R), val_{I}(Q))), w)$\\
+		$=b_{\rightarrow}(b_{\wedge}(b_{\rightarrow}(b_{\rightarrow}(I(P), I(Q)), f), b_{\vee}(I(R), I(Q))), w)$\\
+		$=b_{\rightarrow}(b_{\wedge}(b_{\rightarrow}(b_{\rightarrow}(w, w), f), b_{\vee}(f, w)), w)$\\
+		$=b_{\rightarrow}(b_{\wedge}(b_{\rightarrow}(w, f), w), w)$\\
+		$=b_{\rightarrow}(b_{\wedge}(f, w), w)$\\
+		$=b_{\rightarrow}(f, w)$\\
+		$=w$\\
+	\end{frame}
+	\begin{frame}
+		\frametitle{Wahrheitstabellen}
+		Eine Formel für alle möglichen (oder auch nur eine) Wahrheitsverteilungen auswerten\\
+		Bsp: $F = (A\wedge B)\vee(B\rightarrow\neg A)$\\
+		\textcolor{white}{.}\\ %zeilenumbruch/abstand schöner machen!
+		\begin{tabular}{ccc|cc|c}
+			$A$ & $\neg A$ & $B$ & $(A\wedge B)$ & $(B\rightarrow\neg A)$ & $F$ \\
+			\hline
+			$w$ & $f$ & $w$ & $w$ & $f$ & $w$\\
+			$w$ & $f$ & $f$ & $f$ & $w$ & $w$\\
+			$f$ & $w$ & $w$ & $f$ & $w$ & $w$\\
+			$f$ & $w$ & $f$ & $f$ & $w$ & $w$\\
+		\end{tabular}\\
+		In diesem Fall ist $F$ sogar eine \emph{Tautologie}, d.h. alle Interpretationen von $F$ sind wahr.\\
+		Zwei Formeln $G$ und $H$ heißen \emph{äquivalent}, wenn für alle Interpretationen gilt: $val_{I}(G) = val_{I}(H)$\\
+		Schreibweise: $G\equiv H$\\
+	\end{frame}
+	\begin{frame}
+		\frametitle{Aussagenlogische Regeln}
+		$F,G,H\in For_{AL}$\\
+		$F\wedge F=F,F\vee F=F$\\
+		$F\wedge G=G\wedge F, F\vee G=G\vee F$\\
+		$(F\wedge G)\vee H=(F\vee H)\wedge(G\wedge H)$\\
+		$(F\vee G)\wedge H=(F\wedge H)\vee(G\vee H)$\\
+		$\neg(F\vee G)=(\neg F\wedge\neg G), \neg(F\wedge G)=(\neg F\vee\neg G)$\\
+		$F\wedge(F\vee G)=F, F\vee(F\wedge G)=F$\\
+	\end{frame}
+	%evtl modelle reinmachen? dann nochmal allg tautologie, erfüllbarkeit
+	\begin{frame}
+		\frametitle{Aussagenkalkül}
+		\textcolor{red}{Axiome}\\
+		Seien $G,H,k\in For_{AL}$\\
+		$Ax_{AL1} = (G\rightarrow(H\rightarrow G))$\\
+		$Ax_{AL2} = (G\rightarrow(H\rightarrow K))\rightarrow((G\rightarrow H)\rightarrow(G\rightarrow K))$\\
+		$Ax_{AL3} = (\neg H\rightarrow\neg G)\rightarrow((\neg H\rightarrow G)\rightarrow H)$\\
+		\textcolor{red}{Schlussregel} \emph{Modus Ponens}\\
+		\emph{Aus wahrem kann man nur wahres folgern}, d.h. seien $G, H$ und $G\rightarrow H$ gegeben und sei $G$ und $G\rightarrow H$ wahr, dann muss auch $H$ wahr sein\\
+		$MP : \frac{G\rightarrow H\quad G}{H}$\\
+	\end{frame}
+	%wahrheitstabelle machen
+	\begin{frame}
+		\frametitle{Aufgabe 1}
+		Werten sie die Formel $F$ aus.\\
+		$F = \neg((A\wedge B)\rightarrow\neg(B\vee A))$\\
+		Ansatz: Zerlege Formel $F$ in kleinere Teilformeln\\
+	\end{frame}
+	\begin{frame}
+		\frametitle{Lösung 1}
+		$F = \neg((A\wedge B)\rightarrow\neg(B\vee A))$\\
+		Definiere:\\
+		\begin{itemize}
+			\item $C:=A\wedge B$
+			\item $D:=B\vee A$
+			\item $E:=\neg D=\neg(B\vee A)$
+			\item $G:=C\rightarrow E=(A\wedge B)\rightarrow\neg(B\vee A)$
+		\end{itemize}
+		$\Rightarrow F=\neg G$\\
+		\begin{tabular}{cc|cccc|c}
+			$A$ & $B$ & $C$ & $D$ & $E$ & $G$ & $F$\\
+			\hline
+			$w$ & $w$ & $w$ & $w$ & $f$ & $f$ & $w$\\
+			$w$ & $f$ & $f$ & $w$ & $f$ & $w$ & $f$\\
+			$f$ & $w$ & $f$ & $w$ & $f$ & $w$ & $f$\\
+			$f$ & $f$ & $f$ & $f$ & $w$ & $w$ & $f$\\
+		\end{tabular}
+	\end{frame}
+	%term per hand auswerten
+	\begin{frame}
+		\frametitle{Aufgabe 2}
+		$F=\neg(P\rightarrow Q)\vee Q$\\
+		Interpretieren sie die Formel $F$ für $I(P)=w$ und $I(Q)=f$\\
+	\end{frame}
+	%ebenfalls farben einfügen, wie in aufg 3
+	\begin{frame}
+		\frametitle{Lösung 2}
+		$F=\neg(P\rightarrow Q)\vee Q$\\
+		$val_{I}(\neg(P\rightarrow Q)\vee Q)$\\
+		\pause
+		$=b_{\vee}(val_{I}(\neg(P\rightarrow Q)), val_{I}(Q))$\\
+		\pause
+		$=b_{\vee}(b_{\neg}(val_{I}(P\rightarrow Q)), I(Q))$\\
+		\pause
+		$=b_{\vee}(b_{\neg}(b_{\rightarrow}(val_{I}(P), val_{I}(Q))), f)$\\
+		\pause
+		$=b_{\vee}(b_{\neg}(b_{\rightarrow}(I(P), I(Q))), f)$\\
+		\pause
+		$=b_{\vee}(b_{\neg}(b_{\rightarrow}(w, f)), f)$\\
+		\pause
+		$=b_{\vee}(b_{\neg}(f), f)$\\
+		\pause
+		$=b_{\vee}(w, f)$\\
+		\pause
+		$=w$\\
+	\end{frame}
+	\begin{frame}
+		\frametitle{Aufgabe 3}
+		\framesubtitle{Ableitung aus Prämisse}
+		Prämisse: $\Gamma =\{P\rightarrow(Q\rightarrow R), Q\}$\\
+		Zeige, dass $P\rightarrow R$ gilt\\
+		$Ax_{AL1} = (G\rightarrow(H\rightarrow G))$\\
+		$Ax_{AL2} = (G\rightarrow(H\rightarrow K))\rightarrow((G\rightarrow H)\rightarrow(G\rightarrow K))$\\
+		$Ax_{AL3} = (\neg H\rightarrow\neg G)\rightarrow((\neg H\rightarrow G)\rightarrow H)$\\
+		$MP : \frac{G\rightarrow H\quad G}{H}$\\
+	\end{frame}
+	%Lösungen bei hochladenfolie zu einer verbinden bzw einfach erste lassen und alle farbigen danach löschen
+	\begin{frame}
+		\frametitle{Lösung 3}
+		\framesubtitle{Ableitung aus Prämisse}
+		Prämisse: $\Gamma =\{P\rightarrow(Q\rightarrow R), Q\}$, zz: $P\rightarrow R$\\
+		\begin{tabular}{cl}
+			\textcolor{blue}{$I_{Ax_{AL2}}$} & $(P\rightarrow(Q\rightarrow R))\rightarrow((P\rightarrow Q)\rightarrow(P\rightarrow R))$\\
+			\textcolor{blue}{$II_{Prämisse}$} & $P\rightarrow(Q\rightarrow R)$\\
+			\textcolor{blue}{$III_{MP(I, II)}$} & $(P\rightarrow Q)\rightarrow(P\rightarrow R)$\\
+			\textcolor{blue}{$IV_{Prämisse}$} & $Q$\\
+			\textcolor{blue}{$V_{IV, Ax_{AL1}}$} & $Q\rightarrow(P\rightarrow Q)$\\
+			\textcolor{blue}{$VI_{MP(IV, V)}$} & $P\rightarrow Q$\\
+			\textcolor{blue}{$VII_{MP(III, VI)}$} & $P\rightarrow R$\\
+		\end{tabular}
+		$Ax_{AL1} = (G\rightarrow(H\rightarrow G))$\\
+		$Ax_{AL2} = (G\rightarrow(H\rightarrow K))\rightarrow((G\rightarrow H)\rightarrow(G\rightarrow K))$\\
+	\end{frame}
+	%ab hier löschen -------------
+	%I
+	\begin{frame}
+		\frametitle{Lösung 3}
+		\framesubtitle{Ableitung aus Prämisse}
+		Prämisse: $\Gamma =\{P\rightarrow(Q\rightarrow R), Q\}$, zz: $P\rightarrow R$\\
+		\begin{tabular}{cl}
+			\textcolor{green}{$I_{Ax_{AL2}}$} & $($\textcolor{red}{$P\rightarrow(Q\rightarrow R)$}$)\rightarrow((P\rightarrow Q)\rightarrow(P\rightarrow R))$\\
+			\textcolor{white}{$II_{Prämisse}$} & \textcolor{white}{$P\rightarrow(Q\rightarrow R)$}\\
+			\textcolor{white}{$III_{MP(I, II)}$} & \textcolor{white}{$(P\rightarrow Q)\rightarrow(P\rightarrow R)$}\\
+			\textcolor{white}{$IV_{Prämisse}$} & \textcolor{white}{$Q$}\\
+			\textcolor{white}{$V_{IV, Ax_{AL1}}$} & \textcolor{white}{$Q\rightarrow(P\rightarrow Q)$}\\
+			\textcolor{white}{$VI_{MP(IV, V)}$} & \textcolor{white}{$P\rightarrow Q$}\\
+			\textcolor{white}{$VII_{MP(III, VI)}$} & \textcolor{white}{$P\rightarrow R$}\\
+		\end{tabular}
+		$Ax_{AL1} = (G\rightarrow(H\rightarrow G))$\\
+		$Ax_{AL2} = ($\textcolor{red}{$G\rightarrow(H\rightarrow K)$}$)\rightarrow((G\rightarrow H)\rightarrow(G\rightarrow K))$\\
+	\end{frame}
+	%II
+	\begin{frame}
+		\frametitle{Lösung 3}
+		\framesubtitle{Ableitung aus Prämisse}
+		Prämisse: $\Gamma =\{$\textcolor{red}{$P\rightarrow(Q\rightarrow R)$}$, Q\}$, zz: $P\rightarrow R$\\
+		\begin{tabular}{cl}
+			\textcolor{blue}{$I_{Ax_{AL2}}$} & $(P\rightarrow(Q\rightarrow R))\rightarrow((P\rightarrow Q)\rightarrow(P\rightarrow R))$\\
+			\textcolor{green}{$II_{Prämisse}$} & \textcolor{red}{$P\rightarrow(Q\rightarrow R)$}\\
+			\textcolor{white}{$III_{MP(I, II)}$} & \textcolor{white}{$(P\rightarrow Q)\rightarrow(P\rightarrow R)$}\\
+			\textcolor{white}{$IV_{Prämisse}$} & \textcolor{white}{$Q$}\\
+			\textcolor{white}{$V_{IV, Ax_{AL1}}$} & \textcolor{white}{$Q\rightarrow(P\rightarrow Q)$}\\
+			\textcolor{white}{$VI_{MP(IV, V)}$} & \textcolor{white}{$P\rightarrow Q$}\\
+			\textcolor{white}{$VII_{MP(III, VI)}$} & \textcolor{white}{$P\rightarrow R$}\\
+		\end{tabular}
+		$Ax_{AL1} = (G\rightarrow(H\rightarrow G))$\\
+		$Ax_{AL2} = (G\rightarrow(H\rightarrow K))\rightarrow((G\rightarrow H)\rightarrow(G\rightarrow K))$\\
+	\end{frame}
+	%III
+	\begin{frame}
+		\frametitle{Lösung 3}
+		\framesubtitle{Ableitung aus Prämisse}
+		Prämisse: $\Gamma =\{P\rightarrow(Q\rightarrow R), Q\}$, zz: $P\rightarrow R$\\
+		\begin{tabular}{cl}
+			\textcolor{blue}{$I_{Ax_{AL2}}$} & $($\textcolor{gray}{$P\rightarrow(Q\rightarrow R)$}$)\rightarrow($\textcolor{red}{$(P\rightarrow Q)\rightarrow(P\rightarrow R)$}$)$\\
+			\textcolor{blue}{$II_{Prämisse}$} & \textcolor{gray}{$P\rightarrow(Q\rightarrow R)$}\\
+			\textcolor{green}{$III_{MP(I, II)}$} & \textcolor{red}{$(P\rightarrow Q)\rightarrow(P\rightarrow R)$}\\
+			\textcolor{white}{$IV_{Prämisse}$} & \textcolor{white}{$Q$}\\
+			\textcolor{white}{$V_{IV, Ax_{AL1}}$} & \textcolor{white}{$Q\rightarrow(P\rightarrow Q)$}\\
+			\textcolor{white}{$VI_{MP(IV, V)}$} & \textcolor{white}{$P\rightarrow Q$}\\
+			\textcolor{white}{$VII_{MP(III, VI)}$} & \textcolor{white}{$P\rightarrow R$}\\
+		\end{tabular}
+		$Ax_{AL1} = (G\rightarrow(H\rightarrow G))$\\
+		$Ax_{AL2} = (G\rightarrow(H\rightarrow K))\rightarrow((G\rightarrow H)\rightarrow(G\rightarrow K))$\\
+	\end{frame}
+	%IV
+	\begin{frame}
+		\frametitle{Lösung 3}
+		\framesubtitle{Ableitung aus Prämisse}
+		Prämisse: $\Gamma =\{P\rightarrow(Q\rightarrow R), $\textcolor{red}{$Q$}$\}$, zz: $P\rightarrow R$\\
+		\begin{tabular}{cl}
+			\textcolor{blue}{$I_{Ax_{AL2}}$} & $(P\rightarrow(Q\rightarrow R))\rightarrow((P\rightarrow Q)\rightarrow(P\rightarrow R))$\\
+			\textcolor{blue}{$II_{Prämisse}$} & $P\rightarrow(Q\rightarrow R)$\\
+			\textcolor{blue}{$III_{MP(I, II)}$} & $(P\rightarrow Q)\rightarrow(P\rightarrow R)$\\
+			\textcolor{green}{$IV_{Prämisse}$} & \textcolor{red}{$Q$}\\
+			\textcolor{white}{$V_{IV, Ax_{AL1}}$} & \textcolor{white}{$Q\rightarrow(P\rightarrow Q)$}\\
+			\textcolor{white}{$VI_{MP(IV, V)}$} & \textcolor{white}{$P\rightarrow Q$}\\
+			\textcolor{white}{$VII_{MP(III, VI)}$} & \textcolor{white}{$P\rightarrow R$}\\
+		\end{tabular}
+		$Ax_{AL1} = (G\rightarrow(H\rightarrow G))$\\
+		$Ax_{AL2} = (G\rightarrow(H\rightarrow K))\rightarrow((G\rightarrow H)\rightarrow(G\rightarrow K))$\\
+	\end{frame}
+	%V
+	\begin{frame}
+		\frametitle{Lösung 3}
+		\framesubtitle{Ableitung aus Prämisse}
+		Prämisse: $\Gamma =\{P\rightarrow(Q\rightarrow R), $\textcolor{red}{$Q$}$\}$, zz: $P\rightarrow R$\\
+		\begin{tabular}{cl}
+			\textcolor{blue}{$I_{Ax_{AL2}}$} & $(P\rightarrow(Q\rightarrow R))\rightarrow((P\rightarrow Q)\rightarrow(P\rightarrow R))$\\
+			\textcolor{blue}{$II_{Prämisse}$} & $P\rightarrow(Q\rightarrow R)$\\
+			\textcolor{blue}{$III_{MP(I, II)}$} & $(P\rightarrow Q)\rightarrow(P\rightarrow R)$\\
+			\textcolor{blue}{$IV_{Prämisse}$} & $Q$\\
+			\textcolor{green}{$V_{IV, Ax_{AL1}}$} & \textcolor{red}{$Q$}$\rightarrow(P\rightarrow $\textcolor{red}{$Q$}$)$\\
+			\textcolor{white}{$VI_{MP(IV, V)}$} & \textcolor{white}{$P\rightarrow Q$}\\
+			\textcolor{white}{$VII_{MP(III, VI)}$} & \textcolor{white}{$P\rightarrow R$}\\
+		\end{tabular}
+		$Ax_{AL1} = ($\textcolor{red}{$G$}$\rightarrow(H\rightarrow $\textcolor{red}{$G$}$))$\\
+		$Ax_{AL2} = (G\rightarrow(H\rightarrow K))\rightarrow((G\rightarrow H)\rightarrow(G\rightarrow K))$\\
+	\end{frame}
+	%VI
+	\begin{frame}
+		\frametitle{Lösung 3}
+		\framesubtitle{Ableitung aus Prämisse}
+		Prämisse: $\Gamma =\{P\rightarrow(Q\rightarrow R), Q\}$, zz: $P\rightarrow R$\\
+		\begin{tabular}{cl}
+			\textcolor{blue}{$I_{Ax_{AL2}}$} & $(P\rightarrow(Q\rightarrow R))\rightarrow((P\rightarrow Q)\rightarrow(P\rightarrow R))$\\
+			\textcolor{blue}{$II_{Prämisse}$} & $P\rightarrow(Q\rightarrow R)$\\
+			\textcolor{blue}{$III_{MP(I, II)}$} & $(P\rightarrow Q)\rightarrow(P\rightarrow R)$\\
+			\textcolor{blue}{$IV_{Prämisse}$} & \textcolor{gray}{$Q$}\\
+			\textcolor{blue}{$V_{IV, Ax_{AL1}}$} & \textcolor{gray}{$Q$}$\rightarrow($\textcolor{red}{$P\rightarrow Q$}$)$\\
+			\textcolor{green}{$VI_{MP(IV, V)}$} & \textcolor{red}{$P\rightarrow Q$}\\
+			\textcolor{white}{$VII_{MP(III, VI)}$} & \textcolor{white}{$P\rightarrow R$}\\
+		\end{tabular}
+		$Ax_{AL1} = (G\rightarrow(H\rightarrow G))$\\
+		$Ax_{AL2} = (G\rightarrow(H\rightarrow K))\rightarrow((G\rightarrow H)\rightarrow(G\rightarrow K))$\\
+	\end{frame}
+	%VII
+	\begin{frame}
+		\frametitle{Lösung 3}
+		\framesubtitle{Ableitung aus Prämisse}
+		Prämisse: $\Gamma =\{P\rightarrow(Q\rightarrow R), Q\}$, zz: $P\rightarrow R$\\
+		\begin{tabular}{cl}
+			\textcolor{blue}{$I_{Ax_{AL2}}$} & $(P\rightarrow(Q\rightarrow R))\rightarrow((P\rightarrow Q)\rightarrow(P\rightarrow R))$\\
+			\textcolor{blue}{$II_{Prämisse}$} & $P\rightarrow(Q\rightarrow R)$\\
+			\textcolor{blue}{$III_{MP(I, II)}$} & $($\textcolor{gray}{$P\rightarrow Q$}$)\rightarrow($\textcolor{red}{$P\rightarrow R$}$)$\\
+			\textcolor{blue}{$IV_{Prämisse}$} & $Q$\\
+			\textcolor{blue}{$V_{IV, Ax_{AL1}}$} & $Q\rightarrow(P\rightarrow Q)$\\
+			\textcolor{blue}{$VI_{MP(IV, V)}$} & \textcolor{gray}{$P\rightarrow Q$}\\
+			\textcolor{green}{$VII_{MP(III, VI)}$} & \textcolor{red}{$P\rightarrow R$}\\
+		\end{tabular}
+		$Ax_{AL1} = (G\rightarrow(H\rightarrow G))$\\
+		$Ax_{AL2} = (G\rightarrow(H\rightarrow K))\rightarrow((G\rightarrow H)\rightarrow(G\rightarrow K))$\\
+	\end{frame}
+	%bis hier alles löschen ------------------------------------
+\end{document}
