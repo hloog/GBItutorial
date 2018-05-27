@@ -1,0 +1,21 @@
+\begin{frame}{Lösung}
+	\underline{Beh:} $\forall n\in\mathbb{N}: 6^{n}-5\cdot n+4$ ist durch $5$ teilbar\\
+	\underline{IA:} $n=1:$\\
+	\qquad$6^{1}-5\cdot 1+4=5\vert 5\checkmark$\\
+	\underline{IV:} \emph{Die Behauptung sei wahr für ein beliebiges, aber festes $n\in\mathbb{N}$}\\
+	\underline{IS:} $n\leadsto n+1$\\
+	\qquad $6^{n+1}-5\cdot (n+1)+4=6^{n}\cdot 6-5\cdot n-1$\\
+	\pause
+	\qquad$=6^{n}\cdot 6-30\cdot n + 25\cdot n+24-25$\\
+	\pause
+	\qquad $=6^{n}\cdot 6-30\cdot n+24+25\cdot n-25$\\
+	\pause
+	\qquad $=6^{n}\cdot(6-5\cdot n+4)+5\cdot(5\cdot n-1)$\\
+	\begin{tikzpicture}
+		\hspace{17mm}
+		\draw[decoration={brace,mirror,raise=0pt},decorate] (0,0)--node[below=2pt]{$IV$}(2.3,0);
+		\hspace{29mm}
+		\draw[decoration={brace,mirror,raise=0pt},decorate] (0,0)--node[below=2pt]{$\vert5$}(2,0);
+		\hspace{27mm}$\Box$
+	\end{tikzpicture}
+\end{frame}

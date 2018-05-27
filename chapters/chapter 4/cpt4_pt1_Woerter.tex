@@ -1,0 +1,44 @@
+\begin{frame}{Wörter}
+	Für den Rest des Kapitels sei A ein Alphabet
+	Definition: Ein \emph{Wort} über einem Alphabet A ist eine Folge von Zeichen aus A\\
+	$\mathbb{Z}_{n}=\{i\in\mathbb{N}_{0}\vert0\leq i\leq n\} (n\in\mathbb{N}_{0})$\\
+	Bsp: $\mathbb{Z}_{4} =\{0,1,2,3\},\mathbb{Z}_{1}=\{0\},\mathbb{Z}_{0}=\emptyset$\\
+	Länge eines Wortes = Anzahl der aneinandergefügten Zeichen, geschrieben $\lvert w\rvert$ für Wort $w$\\
+\end{frame}
+
+\begin{frame}{Das leere Wort}
+	geschrieben: $\epsilon$\\
+	Das leere Wort ist eine Abbildung!\\
+	$\epsilon :\mathbb{Z}_{0}\longrightarrow\emptyset$\\
+	$\lvert\epsilon\rvert = 0$\\
+	$\epsilon\cdot w = w = w\cdot\epsilon$\\
+\end{frame}
+
+\begin{frame}{Mengen von Wörtern}
+	Menge aller Wörter\\
+	$A^{\ast}=$Menge aller Wörter über A\\
+	Bsp: $A = \{a, b\}, A^{\ast}$ enthält $\epsilon, a, b, ab, ba, aa, bb, abbabbabaabba,\dots$\\
+	$A^{n}=$Menge aller Wörter der Länge n\\
+	Bsp: $A=\{a,b\}, A^{0}=\{\epsilon\},A^{1}=\{a,b\},A^{2}=\{aa,ab,ba,bb\}$\\
+	$\Rightarrow A^{\ast}=A^{0}\cup A^{1}\cup A^{2}\cup A^{3}\cup\dots = \bigcup\limits_{i\in\mathbb{N}_0}A^{i}$\\%vereinigungen gehen auch mit wörtern
+\end{frame}
+
+\begin{frame}{Mehr zu Wörtern}
+	Konkatenation, das \emph{verbinden} von Zeichen\\
+	schrank$\cdot$schlüssel = schrankschlüssel.\\
+	\underline{Nicht} kommutativ! eiswaffel $\neq$ waffeleis\\
+	$\lvert w_{1}\cdot w_{2}\rvert =\lvert w_{1}\rvert + \lvert w_{2}\rvert$\\
+	\underline{Assoziativ:}$\forall w_{1},w_{2},w_{3}\in A^{\ast}:(w_{1}\cdot w_{2})\cdot w_{3} = w_{1}\cdot (w_{2}\cdot w_{3})$\\
+	Potenzen von Wörtern\\
+	$w^{0}=\epsilon$\\
+	$\forall n\in\mathbb{N}_{0}:w^{n+1}=w^{n}\cdot w$\\
+	$\lvert w^{n}\rvert = n\ast \lvert w\rvert$\\
+\end{frame}
+
+\begin{frame}{Formale Sprachen}
+	L sei eine formale Sprache, $L\subseteq A^{\ast}$\\
+	Bsp: $A =\{0,1,\dots ,8,9\}$, daraus lässt sich die Darstellung der Dezimalzahlen als formale Sprache erstellen\\
+	Meist induktiv definiert\\
+\end{frame}
+
+\input{tasks/cpt4_pt1_A1}

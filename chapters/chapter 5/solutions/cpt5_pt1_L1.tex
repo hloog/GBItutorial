@@ -1,0 +1,19 @@
+\begin{frame}{Lösung 1}
+	$F = \neg((A\wedge B)\rightarrow\neg(B\vee A))$\\
+	Definiere:\\
+	\begin{itemize}
+		\item $C:=A\wedge B$
+		\item $D:=B\vee A$
+		\item $E:=\neg D=\neg(B\vee A)$
+		\item $G:=C\rightarrow E=(A\wedge B)\rightarrow\neg(B\vee A)$
+	\end{itemize}
+	$\Rightarrow F=\neg G$\\
+	\begin{tabular}{cc|cccc|c}
+		$A$ & $B$ & $C$ & $D$ & $E$ & $G$ & $F$ \\
+		\hline
+		$w$ & $w$ & $w$ & $w$ & $f$ & $f$ & $w$ \\
+		$w$ & $f$ & $f$ & $w$ & $f$ & $w$ & $f$ \\
+		$f$ & $w$ & $f$ & $w$ & $f$ & $w$ & $f$ \\
+		$f$ & $f$ & $f$ & $f$ & $w$ & $w$ & $f$ \\
+	\end{tabular}
+\end{frame}

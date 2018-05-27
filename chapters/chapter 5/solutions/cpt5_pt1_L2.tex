@@ -1,0 +1,21 @@
+%ebenfalls farben einfügen, wie in aufg 3
+\begin{frame}{Lösung 2}
+	$F=\neg(P\rightarrow Q)\vee Q$\\
+	$val_{I}(\neg(P\rightarrow Q)\vee Q)$\\
+	\pause
+	$=b_{\vee}(val_{I}(\neg(P\rightarrow Q)), val_{I}(Q))$\\
+	\pause
+	$=b_{\vee}(b_{\neg}(val_{I}(P\rightarrow Q)), I(Q))$\\
+	\pause
+	$=b_{\vee}(b_{\neg}(b_{\rightarrow}(val_{I}(P), val_{I}(Q))), f)$\\
+	\pause
+	$=b_{\vee}(b_{\neg}(b_{\rightarrow}(I(P), I(Q))), f)$\\
+	\pause
+	$=b_{\vee}(b_{\neg}(b_{\rightarrow}(w, f)), f)$\\
+	\pause
+	$=b_{\vee}(b_{\neg}(f), f)$\\
+	\pause
+	$=b_{\vee}(w, f)$\\
+	\pause
+	$=w$\\
+\end{frame}

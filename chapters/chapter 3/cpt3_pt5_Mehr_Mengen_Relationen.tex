@@ -1,43 +1,21 @@
-\documentclass{beamer}
-\usepackage[T1]{fontenc}
-\usepackage[ngerman]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{mathrsfs}
-\usepackage{color}
-%
-\title{Kapitel 5: Aussagenlogik}
-\author{Raphael Adalid Braun, Jannis Weis}
-\date{\today}
-\institute{KIT - Karlruher Institut für Technologie}
-\usetheme{Warsaw}
-\begin{document}
-	\begin{frame}
-		\frametitle{Potenzmengen}
-		Mengen können Elemente von Mengen sein\\
-		$M = \{1, \{2, 3\}, 4, 5\} $Menge mit $\lvert M\rvert = 4$\\
-		\textcolor{red}{Wichtig:} $\lvert \emptyset\rvert = 0$, aber $\lvert\{\emptyset\}\rvert = 1$\\
-		Potenzmenge von M: Schreibweise: $2^M $oder $\mathfrak{P}(M)$\\
-		$\mathfrak{P}(M) = \{ A\vert A\subseteq M\}$(ugs. alle Teilmengen von M)\\
-		Bsp: $M = \{1, 2, 3\}$, dann\\
-		$\mathfrak{P}(M) =\{\emptyset ,1, 2, 3, \{1, 2\}, \{1, 3\}, \{2, 3\}, \{1,2,3\}\}$, ($\emptyset$ ist \underline{immer} Element der Potenzmenge)\\
-		$A\in 2^M$ ist äquivalent zu $A\subseteq M$\\
-		$2^{\lvert M\rvert} = \lvert\mathfrak{P}(M)\rvert$
-	\end{frame}
-	\begin{frame}
-		\frametitle{Große Vereinigungen und Durchschnitt}
-		\dots%inhalt einfügen
-	\end{frame}
-	\begin{frame}
-		\frametitle{Mehr zu Relationen}
-		reflexiv, transitiv (homo/heterogen)
-	\end{frame}
-	\begin{frame}
-		\frametitle{Aufgaben}
-		Sei M eine Menge\\
-		\textcolor{red}{Aufgabe 1} Zeige: $2^{\lvert M\rvert} = \lvert\mathfrak{P}(M)\rvert$\\
-		%etwas zu großen Mengen und relationen
-	\end{frame}
-\end{document}
+\begin{frame}{Potenzmengen}
+	Mengen können Elemente von Mengen sein\\
+	$M = \{1, \{2, 3\}, 4, 5\} $Menge mit $\lvert M\rvert = 4$\\
+	\textcolor{red}{Wichtig:} $\lvert \emptyset\rvert = 0$, aber $\lvert\{\emptyset\}\rvert = 1$\\
+	Potenzmenge von M: Schreibweise: $2^M $oder $\mathfrak{P}(M)$\\
+	$\mathfrak{P}(M) = \{ A\vert A\subseteq M\}$(ugs. alle Teilmengen von M)\\
+	Bsp: $M = \{1, 2, 3\}$, dann\\
+	$\mathfrak{P}(M) =\{\emptyset ,1, 2, 3, \{1, 2\}, \{1, 3\}, \{2, 3\}, \{1,2,3\}\}$, ($\emptyset$ ist \underline{immer} Element der Potenzmenge)\\
+	$A\in 2^M$ ist äquivalent zu $A\subseteq M$\\
+	$2^{\lvert M\rvert} = \lvert\mathfrak{P}(M)\rvert$
+\end{frame}
+
+\begin{frame}{Große Vereinigungen und Durchschnitt}
+	\dots%inhalt einfügen
+\end{frame}
+
+\begin{frame}{Mehr zu Relationen}
+	reflexiv, transitiv (homo/heterogen)
+\end{frame}
+
+\input{tasks/cpt3_pt5_A1}

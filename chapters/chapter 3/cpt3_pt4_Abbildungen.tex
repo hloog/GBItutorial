@@ -1,39 +1,14 @@
-\documentclass{beamer}
-\usepackage[T1]{fontenc}
-\usepackage[ngerman]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{mathrsfs}
-\usepackage{color}
-%
-\title{Kapitel 5: Aussagenlogik}
-\author{Raphael Adalid Braun, Jannis Weis}
-\date{\today}
-\institute{KIT - Karlruher Institut für Technologie}
-\usetheme{Warsaw}
-\begin{document}
-	\begin{frame}
-		\frametitle{Definition von Abbildungen}
-		Definitions- und Zielbereich angeben\\
-		$f: A\longrightarrow B$\\
-		Spezifikation von Funktionswerten (Abbildungsvorschrift)\\
-		$x\mapsto$ Ausdruck, in dem x vorkommen \underline{darf}\\
-		oder $f(x) :=$ Ausdruck, \dots\\
-		Bsp: $f: \mathbb{N}_0\longrightarrow\mathbb{N}_0, n\mapsto
+\begin{frame}{Definition von Abbildungen}
+	Definitions- und Zielbereich angeben\\
+	$f: A\longrightarrow B$\\
+	Spezifikation von Funktionswerten (Abbildungsvorschrift)\\
+	$x\mapsto$ Ausdruck, in dem x vorkommen \underline{darf}\\
+	oder $f(x) :=$ Ausdruck, \dots\\
+	Bsp: $f: \mathbb{N}_0\longrightarrow\mathbb{N}_0, n\mapsto
 		\begin{cases}
-			\frac{n}{2} & \text{, falls n gerade}\\
-			3n+1 & \text{, falls n ungerade}
+			\frac{n}{2} & \text{, falls n gerade}   \\
+			3n+1        & \text{, falls n ungerade}
 		\end{cases}$
-	\end{frame}
-	\begin{frame}
-		\frametitle{Aufgaben}
-		Welche dieser Abbildungen sind injektiv, welche surjektiv und welche bijektiv oder gar keine der drei Eigenschaften??\\
-		\textcolor{red}{Aufgabe 1} $f:\mathbb{N}_0\longrightarrow\mathbb{N}_0, x\mapsto x+1$\\
-		\textcolor{red}{Aufgabe 2} $g:\mathbb{R}_0^+\longrightarrow\mathbb{R}, x\mapsto\sqrt{\lvert x\rvert}$\\
-		\textcolor{red}{Aufgabe 3} $h:\mathbb{R}\longrightarrow\mathbb{R}_0^+, x\mapsto\lvert x\rvert$\\
-		\textcolor{red}{Aufgabe 3} $s:\mathbb{R}\longrightarrow\mathbb{R}^+, x\mapsto\lvert x\rvert$
-		%injektivität und surjektivität zeigen / widerlegen
-	\end{frame}
-\end{document}
+\end{frame}
+
+\input{tasks/cpt3_pt4_A1}
