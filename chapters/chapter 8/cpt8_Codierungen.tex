@@ -1,0 +1,219 @@
+\documentclass{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{color}
+\usepackage{latexsym}%for \Box and \leadsto
+\usepackage{mathtools} % for xRightarrow
+\usepackage{tikz}%zum zusammenfassen
+\usetikzlibrary{decorations.pathreplacing}%zum zusammenfassen
+%
+\title{Kapitel 8: Codierungen}
+\author{Jannis Weis, Raphael Adalid Braun}
+\date{\today}
+\institute{KIT - Karlruher Institut für Technologie}
+%\usepackage{templates/beamerthemekit}
+\begin{document}
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	\begin{frame}
+		\frametitle{Vorbereitung}
+		\framesubtitle{mod und div}
+		mod = Rest bei einer Ganzzahldivision, vergleichbar mit dem \%-Operator in Java\\
+		div = Ergebnis einer Ganzzahldivision, also ohne Rest\\
+		Beispiel:\\
+		\center
+		\begin{tabular}{c|c}
+			\textbf{mod} & \textbf{div}\\
+			\hline
+			$18$mod$4=2$ & $18$div$4=4$\\
+			$19$mod$4=3$ & $19$div$4=4$\\
+			$20$mod$4=0$ & $20$div$4=5$\\
+			$37$mod$13=11$ & $37$div$13=2$\\
+		\end{tabular}
+		\flushleft
+		\emph{Rechenregeln}\\
+		\small
+		\centerline{$\forall x,y\in\mathbb{N}_{0}:x=y\cdot(x$div$y)+(x$mod$y)$}
+		\centerline{$\forall x,y\in\mathbb{N}_{0}:(x\pm y)$mod$k=((x$mod$k)\pm(y$mod$k))$mod$k$}
+		\normalsize
+	\end{frame}
+	\begin{frame}
+		\frametitle{Zahlendarstellung}
+		Alphabet $Z_{n}=\{x\in\mathbb{N}_{0}\vert x<n\}$\\
+		Funktion $Num_{k}: Z_{k}^{\ast}\longrightarrow\mathbb{N}_{0},$\\
+		\small
+		$Num_{k}(\epsilon)=0$\\
+		$Num_{k}(x_{m}x_{m-1}\dots x_{3}x_{2}x_{1})=k\cdot Num_{k}(x_{m}x_{m-1}\dots x_{3}x_{2})+num_{k}(x_{1})$\\
+		Man kürzt $Num_{k}(x)$ oft direkt zu $num_{k}(x)$, wenn $x$ in $Z_{k}$ liegt\\
+		\normalsize
+		Funktion $num_{k}: Z_{k}\longrightarrow\mathbb{N}_{0},$\small$\quad num_{k}(x)=x$\normalsize\\
+	\end{frame}
+	\begin{frame}
+		\frametitle{Zahlendarstellung}
+		\framesubtitle{Beispiele}
+		\begin{enumerate}
+			\item[$\triangleright$] $Num_{10}(742)=10\cdot Num_{10}(74)+num_{10}(2)$\\
+				$=10\cdot(10\cdot Num_{10}(7)+num_{10}(4))+2$\\
+				$=10\cdot(10\cdot(10\cdot (Num_{10}(\epsilon))+num_{10}(7))+4)+2$\\%hier ausführlich mit epsilon, unten mit abkürzen
+				$=10\cdot(10\cdot(10\cdot (0)+7)+4)+2$\\
+				$=10\cdot(10\cdot(7)+4)+2$\\
+				$=10\cdot(74)+2$\\
+				$=742$\\
+			\item[$\triangleright$] $Num_{2}(01101)=2\cdot Num_{2}(0110)+num_{2}(1)$\\
+				$=2\cdot(2\cdot Num_{2}(011)+num_{2}(0))+2^{0}\cdot1$\\
+				$=2\cdot(2\cdot (2\cdot Num_{2}(01)+num_{2}(1))+0)+2^{0}\cdot1$\\
+				$=2\cdot(2\cdot (2\cdot (2\cdot Num_{2}(0)+num_{2}(1))+1)+0)+2^{0}\cdot1$\\
+				$=2^{2}\cdot (2\cdot (2\cdot num_{2}(0)+1)+1)+2^{1}\cdot0+2^{0}\cdot1$\\
+				$=2^{3}\cdot (2\cdot 0+1)+2^{2}\cdot1+2^{1}\cdot0+2^{0}\cdot1$\\
+				$=2^{4}\cdot 0+2^{3}\cdot 1+2^{2}\cdot1+2^{1}\cdot0+2^{0}\cdot1$\\
+				$=0+8+4+0+1=13$
+		\end{enumerate}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Hexadezimaldarstellung}
+		Wie stellt man Basen $\geq10$ dar?\\
+		$Z_{16}=\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15\}$?\\
+		Nein, denn $10,11,12,13,14,15$ bestehen bereits aus zwei Zeichen, man weicht auf andere zeichen aus\\
+		$Z_{16}=\{0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F\}$\\
+		wobei $A=10,B=11,\dots$\\
+	\end{frame}
+	\begin{frame}
+		\frametitle{Zahlenrepräsentation}
+		Sei $k\in\mathbb{N}_{0}$ und $k\geq2$\\
+		$Repr_{k}:\mathbb{N}_{0}\longrightarrow Z_{k},$\\
+		$n\mapsto~
+		\begin{cases}
+			repr_{k}(n) & \text{,falls $n<k$}\\
+			Repr_{k}(n\text{div}k)\cdot repr_{k}(n\text{mod}k) & \text{,falls $n\geq k$}\\
+		\end{cases}$\\
+		\fbox{$\forall n\in\mathbb{N}_{0}:Num_{k}(Repr_{k}(n))=n$}\\
+	\end{frame}
+	\begin{frame}
+		\frametitle{Aufgaben}
+		Geben Sie an:
+		\begin{description}
+			\item[Aufgabe 1] $Num_{5}(43210_{10})$
+			\item[Aufgabe 2] $Repr_{2}(126_{10})$
+			\item[Aufgabe 3] $Repr_{16}(900_{10})$
+		\end{description}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Lösungen}
+		\small
+		\begin{description}
+			\item[Aufgabe 1] $Num_{5}(43210_{10})$\\
+				\pause
+				$=4\cdot 5^{4}+3\cdot 5^{3}+2\cdot 5^{2}+1\cdot 5^{1}+0\cdot 5^{0}$\\
+				\pause
+				$=2500+375+50+5=2930$
+		\end{description}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Lösungen}
+		\small
+		\begin{description}
+			\item[Aufgabe 2] $Repr_{2}(126_{10})$\\
+				\pause
+				$=Repr_{2}(126$div$2)\cdot repr_{2}(126$mod$2)$\\
+				\pause
+				$=Repr_{2}(63)\cdot repr_{2}(0)$\\
+				\pause
+				$=Repr_{2}(63$div$2)\cdot repr_{2}(63$mod$2)\cdot 0$\\
+				\pause
+				$=Repr_{2}(31)\cdot repr_{2}(1)\cdot 0$\\
+				\pause
+				$=Repr_{2}(31$div$2)\cdot repr_{2}(31$mod$2)\cdot 10$\\
+				\pause
+				$=Repr_{2}(15)\cdot repr_{2}(1)\cdot 10$\\
+				\pause
+				$=Repr_{2}(15$div$2)\cdot repr_{2}(15$mod$2)\cdot 110$\\
+				\pause
+				$=Repr_{2}(7)\cdot repr_{2}(1)\cdot 110$\\
+				\pause
+				$=Repr_{2}(7$div$2)\cdot repr_{2}(7$mod$2)\cdot 1110$\\
+				\pause
+				$=Repr_{2}(3)\cdot repr_{2}(1)\cdot 1110$\\
+				\pause
+				$=Repr_{2}(3$div$2)\cdot repr_{2}(3$mod$2)\cdot 11110$\\
+				\pause
+				$=Repr_{2}(1)\cdot repr_{2}(1)\cdot 11110$\\
+				\pause
+				$=Repr_{2}(1$div$2)\cdot repr_{2}(1$mod$2)\cdot 111110$\\
+				\pause
+				$=Repr_{2}(0)\cdot repr_{2}(1)\cdot 111110$\\
+				\pause
+				$=1111110_{2}$\\
+		\end{description}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Lösungen}
+		\small
+		\begin{description}
+			\item[Aufgabe 3] $Repr_{16}(900_{10})$\\
+				\pause
+				$=Repr_{16}(900$div$16)\cdot repr_{16}(900$mod$16)$\\
+				\pause
+				$=Repr_{16}(56)\cdot repr_{16}(4)$\\
+				\pause
+				$=Repr_{16}(56$div$16)\cdot repr_{16}(56$mod$16)\cdot 4$\\
+				\pause
+				$=Repr_{16}(3)\cdot repr_{16}(8)\cdot 4$\\
+				\pause
+				$=Repr_{1}(3$div$16)\cdot repr_{16}(3$mod$16)\cdot 84$\\
+				\pause
+				$=repr_{16}(0)\cdot repr_{16}(3)\cdot 84$\\
+				\pause
+				$=384_{16}$\\
+		\end{description}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Übersetzung von Zahldarstellungen}
+		\framesubtitle{Kommt wieder im zweiten Semester in Digitaltechnik \& Entwurfsverfahren}
+		Geht nur, wenn Basis Vielfaches von anderer ist, zB 2 von 16\\
+		Beispiel: Zahlen von $Z_{2}$ nach $Z_{16}$ und zurück konvertieren. $2^{\textcolor{red}{4}}=16$\\
+		Wir müssen \textcolor{red}{4} Zahlen aus der Dualzahl zusammenfassen, um die Hexadezimalzahl zu bekommen\\
+		$1 0110 0101 1010_{2}=\textcolor{blue}{000}1\thinspace0110\thinspace0101\thinspace1010_{2}=165A_{16}$\par
+		\begin{tikzpicture}
+			\hspace{31.7mm}
+        			\draw[decoration={brace,mirror,raise=-4pt},decorate] (0,0) -- node[below=-2pt] {$1$} (0.75,0);
+        			\hspace{8.35mm}
+        			\draw[decoration={brace,mirror,raise=-4pt},decorate] (0,0)--node[below=-2pt]{$6$}(0.75,0);
+        			\hspace{8.355mm}
+        			\draw[decoration={brace,mirror,raise=-4pt},decorate] (0,0)--node[below=-2pt]{$5$}(0.75,0);
+        			\hspace{8.4mm}
+        			\draw[decoration={brace,mirror,raise=-4pt},decorate] (0,0)--node[below=-2pt]{$10$}(0.75,0);
+    		\end{tikzpicture}
+    		\textcolor{white}{.}\\%schöner machen!
+    		$C7F_{16}=1100\thinspace 0111\thinspace 1111_{2}$\\
+    		\begin{tikzpicture}
+			\hspace{15.57mm}
+        			\draw[decoration={brace,mirror,raise=-4pt},decorate] (0,0) -- node[below=-2pt] {{\footnotesize$12$}} (0.75,0);
+        			\hspace{8.35mm}
+        			\draw[decoration={brace,mirror,raise=-4pt},decorate] (0,0)--node[below=-2pt]{{\footnotesize$7$}}(0.75,0);
+        			\hspace{8.355mm}
+        			\draw[decoration={brace,mirror,raise=-4pt},decorate] (0,0)--node[below=-2pt]{{\footnotesize $15$}}(0.75,0);
+    		\end{tikzpicture}
+	\end{frame}
+	%Rechnen in Zk (restklassen) mit zeichnung. ``vergleichbar mit restklassen aus LA1''
+	%Homomorphismen...
+	\begin{frame}
+		\frametitle{Huffmann-Codierung}
+		gegeben: Alphabet $A$ und Wort $W\in A^{\ast}$\\
+		\begin{itemize}
+			\item[$\bullet$] $h:A^{\ast}\longrightarrow Z_{2}^{\ast}$
+			\item[$\bullet$] $\epsilon$-freier Homomorphismus
+		\end{itemize}
+		findet kürzeste Codierung von $w$ in $Z_{2}$\\
+	\end{frame}
+	\begin{frame}
+		\frametitle{Huffman-Codierung}
+		\framesubtitle{Huffman-Baum}
+		
+	\end{frame}
+\end{document}
