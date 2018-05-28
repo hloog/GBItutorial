@@ -1,27 +1,7 @@
 \documentclass[18pt]{beamer}
-\usepackage{templates/beamerthemekit}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{libertine}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{mathrsfs}
-\usepackage{latexsym}%for \Box and \leadsto
-\usepackage{mathtools} % for xRightarrow
-\usepackage{tikz}%zum zusammenfassen
-\usepackage{xifthen}
-\newcommand{\inserttask}[2][]{\title[Aufgabe]{} %zum einfügen von Aufgaben
- \ifdefined\showSolutions
-  \input{../../tasks/#2}\ifthenelse{\isempty{#1}}{}{\input{../../solutions/#1}}
- \else\input{../../tasks/#2}\fi
-}
-\usetikzlibrary{decorations.pathreplacing}%zum zusammenfassen
+\input{../../extern/tutorial_template.tex}
 
 \title[Codierungen]{Kapitel 8: Codierungen}
-\subtitle{Tutorium - } %Tutoriums-Nr einfügen
-\author{Raphael Adalid Braun, Jannis Weis}
-\institute{Grundbegriffe der Informatik | WS 2018/19}
-\titlelogo{no_logo}
 
 \begin{document}
 \selectlanguage{ngerman}

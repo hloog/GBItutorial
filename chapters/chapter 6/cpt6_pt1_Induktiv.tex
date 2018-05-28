@@ -1,54 +1,54 @@
 \begin{frame}{Induktive Beweise}
-	Gegeben: Aussage $\mathcal{A}$\\
-	Ziel: Zeige, dass $\mathcal{A}$ für alle Fälle wahr ist, indem man zeigt, dass $\mathcal{A}$ für einen Fall wahr ist und auch für alle darauffolgenden\\
-	\underline{Beispielhaftes Vorgehen:}\\
-	\underline{Beh:} Aussage $\mathcal{A}$ ist für alle $n\in\mathbb{N}_{0} wahr$\\
-	\underline{Induktionsanfang(IA):} Sei $n=0$, dann $\dots\checkmark$\\
-	\underline{Induktionsvoraussetzung(IV):} \emph{Die Behauptung sei wahr für ein beliebiges, aber festes $n\in\mathbb{N}_{0}$}\\
-	\underline{Induktionsschritt(IS):} $n\leadsto n+1$\hfill (wichtig: IV verwenden!)\\
-	\qquad $\dots\xRightarrow{\text{IV}}\dots _{\Box}$
+ Gegeben: Aussage $\mathcal{A}$\\
+ Ziel: Zeige, dass $\mathcal{A}$ für alle Fälle wahr ist, indem man zeigt, dass $\mathcal{A}$ für einen Fall wahr ist und auch für alle darauffolgenden\\
+ \underline{Beispielhaftes Vorgehen:}\\
+ \underline{Beh:} Aussage $\mathcal{A}$ ist für alle $n\in\mathbb{N}_{0} wahr$\\
+ \underline{Induktionsanfang(IA):} Sei $n=0$, dann $\dots\checkmark$\\
+ \underline{Induktionsvoraussetzung(IV):} \emph{Die Behauptung sei wahr für ein beliebiges, aber festes $n\in\mathbb{N}_{0}$}\\
+ \underline{Induktionsschritt(IS):} $n\leadsto n+1$\hfill (wichtig: IV verwenden!)\\
+ \qquad $\dots\xRightarrow{\text{IV}}\dots _{\Box}$
 \end{frame}
 
 \begin{frame}{Induktive Beweise - Beispiel}
-	%hier nur mit zahlen, geht aber auch zB über Wortlänge
-	\underline{Beh:} $2^{3\cdot n}-1$ ist für alle $n\in\mathbb{N}$ durch $7$ teilbar\\
-	\underline{IA:} $n=1:$\\
-	\qquad $2^{3\cdot 1}-1=7 \Rightarrow 7\vert 7\checkmark$\\
-	\underline{IV:} \emph{Die Behauptung sei wahr für ein beliebiges, aber festes $n\in\mathbb{N}$}\\
-	\underline{IS:} $n\leadsto n+1:$\\
-	\qquad $2^{3\cdot(n+1)}-1 = 2^{3\cdot n+3}-1$\\
-	\pause
-	\qquad $=2^{3\cdot n}\cdot 2^{3}-1$\\
-	\pause
-	\qquad $=8\cdot 2^{3\cdot n}-1$\\
-	\pause
-	\qquad $=7\cdot2^{3\cdot n}+2^{3\cdot n}-1\Rightarrow 2^{3\cdot(n+1)}-1)\medspace\vert\thinspace 7\quad\Box$\\
-	\begin{tikzpicture}
-		\hspace{11mm}
-		\draw[decoration={brace,mirror,raise=0pt},decorate] (0,0) -- node[below=2pt] {$\vert 7$} (1,0);%raise = nach unten verschieben, mirror weil sonst nach oben
-		\hspace{16.5mm}
-		\draw[decoration={brace,mirror,raise=0pt},decorate] (0,0)--node[below=2pt]{$IV$}(1.3,0);
-	\end{tikzpicture}
+ %hier nur mit zahlen, geht aber auch zB über Wortlänge
+ \underline{Beh:} $2^{3\cdot n}-1$ ist für alle $n\in\mathbb{N}$ durch $7$ teilbar\\
+ \underline{IA:} $n=1:$\\
+ \qquad $2^{3\cdot 1}-1=7 \Rightarrow 7\vert 7\checkmark$\\
+ \underline{IV:} \emph{Die Behauptung sei wahr für ein beliebiges, aber festes $n\in\mathbb{N}$}\\
+ \underline{IS:} $n\leadsto n+1:$\\
+ \qquad $2^{3\cdot(n+1)}-1 = 2^{3\cdot n+3}-1$\\
+ \pause
+ \qquad $=2^{3\cdot n}\cdot 2^{3}-1$\\
+ \pause
+ \qquad $=8\cdot 2^{3\cdot n}-1$\\
+ \pause
+ \qquad $=7\cdot2^{3\cdot n}+2^{3\cdot n}-1\Rightarrow 2^{3\cdot(n+1)}-1)\medspace\vert\thinspace 7\quad\Box$\\
+ \begin{tikzpicture}
+  \hspace{11mm}
+  \draw[decoration={brace,mirror,raise=0pt},decorate] (0,0) -- node[below=2pt] {$\vert 7$} (1,0);%raise = nach unten verschieben, mirror weil sonst nach oben
+  \hspace{16.5mm}
+  \draw[decoration={brace,mirror,raise=0pt},decorate] (0,0)--node[below=2pt]{$IV$}(1.3,0);
+ \end{tikzpicture}
 \end{frame}
 
-\inserttaks[cpt6_pt1_L1]{cpt6_pt1_A1}
+\inserttask[cpt6_pt1_L1]{cpt6_pt1_A1}
 
 \begin{frame}{Induktive Definition}
-	\framesubtitle{Definition}
-	Ein Element wird definiert, von da aus wird induktiv jedes weitere definiert.\\
-	Beispiel:\\
-	\centerline{$L_{0}=\epsilon$}
-	\centerline{$\forall n\in\mathbb{N}_{0}:L_{n+1}=L_{n}\cup\{wab\vert w\in L_{n}\}$}
-	Hier wäre dann $L_{n}=\{(ab)^{k}\vert k\leq n,k\in\mathbb{N}_{0}\}$\\
+ \framesubtitle{Definition}
+ Ein Element wird definiert, von da aus wird induktiv jedes weitere definiert.\\
+ Beispiel:\\
+ \centerline{$L_{0}=\epsilon$}
+ \centerline{$\forall n\in\mathbb{N}_{0}:L_{n+1}=L_{n}\cup\{wab\vert w\in L_{n}\}$}
+ Hier wäre dann $L_{n}=\{(ab)^{k}\vert k\leq n,k\in\mathbb{N}_{0}\}$\\
 \end{frame}
 \begin{frame}
-	\frametitle{Induktive Definition}
-	\framesubtitle{Varianten}
-	\begin{itemize}
-		\item Induktionsanfang kann an späterer Stelle, bspw. bei $n=2$ oder $n=3$ sein.
-		\item Es kann mehrere Induktionsanfänge geben, zB. für gerade und ungerade Zahlen, oder wenn man sich in $L_{n+1}$ auf $L_{n-1}$ bezieht
-		\item Induktionsschritt nicht $n\leadsto n+1$, sondern zB. $n\leadsto 5\cdot n$
-	\end{itemize}
-	Gilt auch für induktive Beweise, bei mehrfachem Induktionsanfang reicht aber, die verschiedenen Anfangswerte zu bezeichnen, als Induktionsschritt reicht $n\leadsto n+1$
+ \frametitle{Induktive Definition}
+ \framesubtitle{Varianten}
+ \begin{itemize}
+  \item Induktionsanfang kann an späterer Stelle, bspw. bei $n=2$ oder $n=3$ sein.
+  \item Es kann mehrere Induktionsanfänge geben, zB. für gerade und ungerade Zahlen, oder wenn man sich in $L_{n+1}$ auf $L_{n-1}$ bezieht
+  \item Induktionsschritt nicht $n\leadsto n+1$, sondern zB. $n\leadsto 5\cdot n$
+ \end{itemize}
+ Gilt auch für induktive Beweise, bei mehrfachem Induktionsanfang reicht aber, die verschiedenen Anfangswerte zu bezeichnen, als Induktionsschritt reicht $n\leadsto n+1$
 \end{frame}
 \end{document}
