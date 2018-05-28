@@ -2,7 +2,6 @@
 \usepackage{templates/beamerthemekit}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-%\usepackage{lmodern}
 \usepackage{libertine}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -10,6 +9,12 @@
 \usepackage{latexsym}%for \Box and \leadsto
 \usepackage{mathtools} % for xRightarrow
 \usepackage{tikz}%zum zusammenfassen
+\usepackage{xifthen}
+\newcommand{\inserttask}[2][]{\title[Aufgabe]{} %zum einfügen von Aufgaben
+ \ifdefined\showSolutions
+  \input{../../tasks/#2}\ifthenelse{\isempty{#1}}{}{\input{../../solutions/#1}}
+ \else\input{../../tasks/#2}\fi
+}
 \usetikzlibrary{decorations.pathreplacing}%zum zusammenfassen
 
 %\titleimage{mypicture}
@@ -29,30 +34,30 @@
 \selectlanguage{ngerman}
 
 \begin{frame}
-	\titlepage
+ \titlepage
 \end{frame}
 
 \begin{frame}{Einführung}
-	\framesubtitle{Parallele Tutorien}
-	%add timetable with other tutorials, time and location included
-	%mention that other tutorials have same content and slides
-	\begin{itemize}
-		\item[]Jannis Weis: uwfwp@student.kit.edu
-		\item[]Raphael Adalid Braun: unvcz@student.kit.edu
-		\item[]Unsere Aufgaben und Lösungen werden nicht hochgeladen, also bitte mitschreiben
-	\end{itemize}
+ \framesubtitle{Parallele Tutorien}
+ %add timetable with other tutorials, time and location included
+ %mention that other tutorials have same content and slides
+ \begin{itemize}
+  \item[]Jannis Weis: uwfwp@student.kit.edu
+  \item[]Raphael Adalid Braun: unvcz@student.kit.edu
+  \item[]Unsere Aufgaben und Lösungen werden nicht hochgeladen, also bitte mitschreiben
+ \end{itemize}
 \end{frame}
 \begin{frame}
-	\frametitle{Einführung}
-	\framesubtitle{Organisatorisches}
-	\begin{itemize}
-		\item Übungsblätter wöchentlich
-		\item Ausgabe Mittwoch, etwa 14.00 Uhr
-		\item Abgabe Freitag, 13.00 Uhr im Briefkasten im Infobau
-		\item Übungsschein: $\geq50\%$ Punkte
-		\item Deckblatt abgeben!
-		\item Alleine abgeben, alles handschriftlich
-		      %date of exam?
-	\end{itemize}
+ \frametitle{Einführung}
+ \framesubtitle{Organisatorisches}
+ \begin{itemize}
+  \item Übungsblätter wöchentlich
+  \item Ausgabe Mittwoch, etwa 14.00 Uhr
+  \item Abgabe Freitag, 13.00 Uhr im Briefkasten im Infobau
+  \item Übungsschein: $\geq50\%$ Punkte
+  \item Deckblatt abgeben!
+  \item Alleine abgeben, alles handschriftlich
+        %date of exam?
+ \end{itemize}
 \end{frame}
 \end{document}

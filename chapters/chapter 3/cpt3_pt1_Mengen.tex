@@ -1,83 +1,83 @@
 \begin{frame}{Was sind Mengen?}
-	Menge = ''Behälter'' mit Objekten\\
-	Elemente \textbf{können} Zahlen sein.\\
-	Jedes Element kann pro Menge nur einmal vorhanden sein.\\
-	\begin{equation*}
-		\lbrace 1, 2, 2, 3, 3, 3\rbrace = \lbrace 1, 2, 3\rbrace
-	\end{equation*}
-	Wichtigste Mengen in GBI:\\
-	\begin{description}
-		\item[Natürliche Zahlen] $\mathbb{N}$ (Vorsicht! Unterschied zwischen $\mathbb{N}$ und $\mathbb{N}_0$)
-		\item[Ganze Zahlen] $\mathbb{Z}$
-		\item[Reelle Zahlen] $\mathbb{R}$
-		\item[Leere Menge] $\emptyset$ oder \{   \}
-	\end{description}
-	$\emptyset\subseteq\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{R}$
+ Menge = ''Behälter'' mit Objekten\\
+ Elemente \textbf{können} Zahlen sein.\\
+ Jedes Element kann pro Menge nur einmal vorhanden sein.\\
+ \begin{equation*}
+  \lbrace 1, 2, 2, 3, 3, 3\rbrace = \lbrace 1, 2, 3\rbrace
+ \end{equation*}
+ Wichtigste Mengen in GBI:\\
+ \begin{description}
+  \item[Natürliche Zahlen] $\mathbb{N}$ (Vorsicht! Unterschied zwischen $\mathbb{N}$ und $\mathbb{N}_0$)
+  \item[Ganze Zahlen] $\mathbb{Z}$
+  \item[Reelle Zahlen] $\mathbb{R}$
+  \item[Leere Menge] $\emptyset$ oder \{   \}
+ \end{description}
+ $\emptyset\subseteq\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{R}$
 \end{frame}
 
 \begin{frame}{Abkürzungen beim Hantieren mit Mengen}
-	\begin{itemize}
-		\item[] Schreibweise: \textcolor{red}{x ist Element von A}, d.h. wenn x in A enthalten ist:
-		      \begin{itemize}
-			      \item[] \center{$x \in A$}
-		      \end{itemize}
-		\item[] Genauso, wenn x \textcolor{red}{nicht} in A enthalten ist:
-		      \begin{itemize}
-			      \item[] \center{$x \notin A$}
-		      \end{itemize}
-		\item[] \textcolor{red}{Für alle x}, die Element von A sind, gilt \dots
-		      \begin{itemize}
-			      \item[] \center{$\forall x \in A: \dots$}
-		      \end{itemize}
-		\item[] \textcolor{red}{Es existiert (mind. ein) x}, das Element von A ist, für das \dots gilt.
-		      \begin{itemize}
-			      \item[] \center{$\exists x\in A: \dots$}
-		      \end{itemize}
-	\end{itemize}
+ \begin{itemize}
+  \item[] Schreibweise: \textcolor{red}{x ist Element von A}, d.h. wenn x in A enthalten ist:
+        \begin{itemize}
+         \item[] \center{$x \in A$}
+        \end{itemize}
+  \item[] Genauso, wenn x \textcolor{red}{nicht} in A enthalten ist:
+        \begin{itemize}
+         \item[] \center{$x \notin A$}
+        \end{itemize}
+  \item[] \textcolor{red}{Für alle x}, die Element von A sind, gilt \dots
+        \begin{itemize}
+         \item[] \center{$\forall x \in A: \dots$}
+        \end{itemize}
+  \item[] \textcolor{red}{Es existiert (mind. ein) x}, das Element von A ist, für das \dots gilt.
+        \begin{itemize}
+         \item[] \center{$\exists x\in A: \dots$}
+        \end{itemize}
+ \end{itemize}
 \end{frame}
 
 \begin{frame}{Teilmengen}
-	A und B seien Mengen, dann ist A Teilmenge von B, wenn gilt:
-	\center{$\forall x\in A: x\in B$}\\
-	A Teilmenge von B schreibt man:
-	\center{$A\subseteq B$}\\
-	A und B sind gleich ($A = B$), genau dann, wenn gilt:
-	\center{$A\subseteq B$ und $B\subseteq A$}
+ A und B seien Mengen, dann ist A Teilmenge von B, wenn gilt:
+ \center{$\forall x\in A: x\in B$}\\
+ A Teilmenge von B schreibt man:
+ \center{$A\subseteq B$}\\
+ A und B sind gleich ($A = B$), genau dann, wenn gilt:
+ \center{$A\subseteq B$ und $B\subseteq A$}
 \end{frame}
 
 \begin{frame}{Vereinigung und Durchschnitt}
-	A und B seien Mengen.\\
-	\underline{Vereinigung $A\cup B$}
-	\begin{itemize}
-		\item $\forall x\in A\cup B: x\in A$ \textbf{oder} $x\in B$
-		\item Bsp: $\{1, 2, 3\}\cup \{3, 4, 5\} = \{1, 2, 3, 4, 5\}$
-	\end{itemize}
-	Durchschnitt $A\cap B$
-	\begin{itemize}
-		\item $\forall x\in A\cap B: x\in A$ \textbf{und} $x\in B$
-		\item Bsp: $\{1, 2, 3\}\cap \{3, 4, 5\} = \{3\}$
-	\end{itemize}
+ A und B seien Mengen.\\
+ \underline{Vereinigung $A\cup B$}
+ \begin{itemize}
+  \item $\forall x\in A\cup B: x\in A$ \textbf{oder} $x\in B$
+  \item Bsp: $\{1, 2, 3\}\cup \{3, 4, 5\} = \{1, 2, 3, 4, 5\}$
+ \end{itemize}
+ Durchschnitt $A\cap B$
+ \begin{itemize}
+  \item $\forall x\in A\cap B: x\in A$ \textbf{und} $x\in B$
+  \item Bsp: $\{1, 2, 3\}\cap \{3, 4, 5\} = \{3\}$
+ \end{itemize}
 \end{frame}
 
 \begin{frame}{Eigenschaften von Vereinigung und Durchschnitt}
-	A, B und C seien Mengen
-	\begin{description}
-		\item[Idempotenz] $A\cup A = A$ / $A\cap A = A$
-		\item[Kommutativ] $A\cup B = B\cup A$ / $A\cap B = B\cap A$
-		\item[Assoziativ] $A\cup (B\cup C) = (A\cup B) \cup C$
-		\item[Distributiv] $A\cap (B\cup C) = (A\cap B)\cup (A\cap C)$ / $A\cup (B\cap C) = (A\cup B)\cap (A\cup C)$
-	\end{description}
+ A, B und C seien Mengen
+ \begin{description}
+  \item[Idempotenz] $A\cup A = A$ / $A\cap A = A$
+  \item[Kommutativ] $A\cup B = B\cup A$ / $A\cap B = B\cap A$
+  \item[Assoziativ] $A\cup (B\cup C) = (A\cup B) \cup C$
+  \item[Distributiv] $A\cap (B\cup C) = (A\cap B)\cup (A\cap C)$ / $A\cup (B\cap C) = (A\cup B)\cap (A\cup C)$
+ \end{description}
 \end{frame}
 
 \begin{frame}{Mengendifferenz und Kardinalität}
-	A und B seien Mengen
-	Mengendifferenz $A\setminus B$
-	\begin{itemize}
-		\item $\forall x\in A\setminus B: x\in A$ \textbf{und} $x\notin B$
-		\item Bsp: $\{1, 2, 3, 4, 5\} \setminus \{2, 4\} = \{1, 3, 5\}$
-	\end{itemize}
-	Kardinalität einer Menge A = Anzahl der Elemente in A\\
-	Sei $A := \{1, 2, 3\}$, dann $\lvert A\rvert = 3$, aber auch $\lvert \{1, 2, 3, 3, 3\}\rvert = 3$
+ A und B seien Mengen
+ Mengendifferenz $A\setminus B$
+ \begin{itemize}
+  \item $\forall x\in A\setminus B: x\in A$ \textbf{und} $x\notin B$
+  \item Bsp: $\{1, 2, 3, 4, 5\} \setminus \{2, 4\} = \{1, 3, 5\}$
+ \end{itemize}
+ Kardinalität einer Menge A = Anzahl der Elemente in A\\
+ Sei $A := \{1, 2, 3\}$, dann $\lvert A\rvert = 3$, aber auch $\lvert \{1, 2, 3, 3, 3\}\rvert = 3$
 \end{frame}
 
-\input{../../tasks/cpt3_pt1_A1}
+\inserttask{cpt3_pt1_A1}

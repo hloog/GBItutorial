@@ -9,6 +9,12 @@
 \usepackage{latexsym}%for \Box and \leadsto
 \usepackage{mathtools} % for xRightarrow
 \usepackage{tikz}%zum zusammenfassen
+\usepackage{xifthen}
+\newcommand{\inserttask}[2][]{\title[Aufgabe]{} %zum einfügen von Aufgaben
+ \ifdefined\showSolutions
+  \input{../../tasks/#2}\ifthenelse{\isempty{#1}}{}{\input{../../solutions/#1}}
+ \else\input{../../tasks/#2}\fi
+}
 \usetikzlibrary{decorations.pathreplacing}%zum zusammenfassen
 
 \title[Formale Sprachen]{Kapitel 7: Formale Sprachen}
@@ -21,7 +27,7 @@
 \selectlanguage{ngerman}
 
 \begin{frame}
-	\titlepage
+ \titlepage
 \end{frame}
 
 %Entfernen für Tutoriumsfolien-%
